@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
+import CustomerList from './Components/CustomerList';
 
 class App extends Component {
   render() {
@@ -37,7 +38,7 @@ class App extends Component {
             <Library />
           </Route>
           <Route path="/customers">
-            <Customers />
+            <CustomerList />
           </Route>
           <Route path="/">
             <Home />
@@ -58,10 +59,6 @@ function Search() {
 
 function Library() {
   return <h1>Movie Library</h1>;
-}
-
-function Customers() {
-  return <h1>Customer List</h1>;
 }
 
 export default App;
