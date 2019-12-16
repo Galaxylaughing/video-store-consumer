@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
+import MovieList from './components/MovieList';
 
 class App extends Component {
   render() {
@@ -34,7 +35,7 @@ class App extends Component {
             <Search />
           </Route>
           <Route path="/library">
-            <Library />
+            <MovieList />
           </Route>
           <Route path="/customers">
             <Customers />
@@ -56,9 +57,7 @@ function Search() {
   return <h1>Search for a Movie</h1>;
 }
 
-function Library() {
-  return <h1>Movie Library</h1>;
-}
+
 
 function Customers() {
   return <h1>Customer List</h1>;
