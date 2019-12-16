@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import CustomerRow from './CustomerRow';
 import './CustomerList.css';
 
@@ -59,6 +60,10 @@ class CustomerList extends Component {
       </section>
     );
   }
+}
+
+CustomerList.propTypes = {
+  
 }
 
 export default CustomerList;
