@@ -8,6 +8,7 @@ import {
 import logo from './logo.svg';
 import './App.css';
 import CustomerList from './Components/CustomerList';
+import MovieList from './components/MovieList';
 
 class App extends Component {
   render() {
@@ -35,7 +36,7 @@ class App extends Component {
             <Search />
           </Route>
           <Route path="/library">
-            <Library />
+            <MovieList />
           </Route>
           <Route path="/customers">
             <CustomerList />
@@ -57,8 +58,6 @@ function Search() {
   return <h1>Search for a Movie</h1>;
 }
 
-function Library() {
-  return <h1>Movie Library</h1>;
-}
+
 
 export default App;
