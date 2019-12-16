@@ -1,7 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CustomerRow = ({ id, name, account_credit, address, city, state, postal_code, movies_checkout_out_count, phone, registered_at }) => {
+const CustomerRow = (
+  { id, 
+    name, 
+    account_credit, 
+    address, 
+    city, 
+    state, 
+    postal_code, 
+    movies_checkout_out_count, 
+    phone, 
+    registered_at,
+    selectCustomer }
+  ) => {
+
+  const onSelectClick = () => {
+    selectCustomer( id );
+  }
+
   return (
     <tr>
       <td>{ id }</td>
@@ -11,6 +28,7 @@ const CustomerRow = ({ id, name, account_credit, address, city, state, postal_co
       <td>{ address } { city }, { state } { postal_code }</td>
       <td>{ phone }</td>
       <td>{ registered_at }</td>
+      <td><button onClick={ onSelectClick }>Select</button></td>
     </tr>
   );
 }
@@ -26,6 +44,7 @@ CustomerRow.propTypes = {
   movies_checkout_out_count: PropTypes.number,
   phone: PropTypes.string,
   registered_at: PropTypes.string,
+  selectCustomer: PropTypes.func.isRequired,
 }
 
 export default CustomerRow;

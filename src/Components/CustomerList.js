@@ -11,6 +11,7 @@ class CustomerList extends Component {
     this.state = {
       customers: [],
       error: undefined,
+      selectedCustomer: undefined,
     };
   }
 
@@ -26,11 +27,21 @@ class CustomerList extends Component {
       });
   }
 
+  selectCustomer = ( customerId ) => {
+    const { customers } = this.state;
+    const selectedCustomer = customers.find((customer) => {
+      return customer.id === customerId;
+    });
+
+    this.setState({selectedCustomer});
+  }
+
   makeCustomerList = (customers) => {
     return customers.map((customer, i) => {
       return <CustomerRow 
         {...customer}
         key={i}
+        selectCustomer={ this.selectCustomer }
       />
     });
   }
@@ -50,6 +61,7 @@ class CustomerList extends Component {
               <th>Address</th>
               <th>Phone Number</th>
               <th>Registrated Date</th>
+              <th>Select Customer</th>
             </tr>
           </thead>
           <tbody>
@@ -63,7 +75,7 @@ class CustomerList extends Component {
 }
 
 CustomerList.propTypes = {
-  
+
 }
 
 export default CustomerList;
