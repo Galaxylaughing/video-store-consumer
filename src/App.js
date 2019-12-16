@@ -74,7 +74,11 @@ class App extends Component {
             <Library />
           </Route>
           <Route path="/customers">
-            <CustomerList selectCustomer={ this.selectCustomer } customers={ this.state.customers } />
+            <CustomerList 
+              selectCustomer={ this.selectCustomer } 
+              customers={ this.state.customers } 
+              selectedCustomer={ this.state.selectedCustomer } 
+            />
           </Route>
           <Route path="/">
             <Home />

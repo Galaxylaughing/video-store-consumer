@@ -3,18 +3,15 @@ import PropTypes from 'prop-types';
 import CustomerRow from './CustomerRow';
 import './CustomerList.css';
 
-const CustomerList = (props) => {
-
-  const selectCustomer = ( customerId ) => {
-    this.props.selectCustomer(customerId);
-  }
+const CustomerList = ({selectCustomer, customers, selectedCustomer}) => {
 
   const makeCustomerList = (customers) => {
     return customers.map((customer, i) => {
       return <CustomerRow 
         {...customer}
         key={i}
-        selectCustomer={ props.selectCustomer }
+        selectCustomer={ selectCustomer }
+        isSelected={ selectedCustomer === customer ? true : false }
       />
     });
   }
@@ -36,7 +33,7 @@ const CustomerList = (props) => {
           </tr>
         </thead>
         <tbody>
-          { makeCustomerList(props.customers) }
+          { makeCustomerList(customers) }
         </tbody>
       </table>
 
@@ -47,6 +44,7 @@ const CustomerList = (props) => {
 CustomerList.propTypes = {
   selectCustomer: PropTypes.func.isRequired,
   customers: PropTypes.array.isRequired,
+  selectedCustomer: PropTypes.object,
 }
 
 export default CustomerList;
