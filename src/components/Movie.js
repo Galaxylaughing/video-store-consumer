@@ -9,8 +9,12 @@ class Movie extends Component {
       <p>{title} </p>
       <p>{overview}</p>
       <p>{releaseDate}</p>
-      <img src={imageUrl} alt={`Movie`} />
-      <button onClick={() => { selectMovieCallback(id) }}>Select</button >
+      {imageUrl !== undefined ?
+      <img src={imageUrl} alt={`Movie`} />: null
+      }
+      {selectMovieCallback !== undefined ? 
+      <button onClick={() => { selectMovieCallback(id) }}>Select</button >: null
+      }
       </ul>
     )
   }

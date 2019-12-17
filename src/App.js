@@ -22,6 +22,7 @@ class App extends Component {
       error: undefined,
       movies: [],
       selectedMovie: undefined,
+      foundMovie: undefined,
     }
   }
 
@@ -69,6 +70,17 @@ class App extends Component {
     console.log(selectedMovie)
   }
 
+  findMovie = (movieTitle)  => {
+    console.log(movieTitle.title)
+    axios.get(`http://localhost:3000/movies/${movieTitle.title}`)
+      .then((response) => {
+        this.setState({ foundMovie: response.data });
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
+  }
+
   render() {
     return (
       <Router>
@@ -93,7 +105,9 @@ class App extends Component {
 
         <Switch>
           <Route path="/search">
-            <MovieSearch />
+            <MovieSearch 
+            findMovieCallback={ this.findMovie }
+            foundMovie={this.state.foundMovie}/>
           </Route>
           <Route path="/library">
             <MovieList 
