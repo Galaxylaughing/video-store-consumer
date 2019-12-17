@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Movie extends Component {
 
   render() {
-    const { id, title, overview, releaseDate, imageUrl } = this.props;
+    const { id, title, overview, releaseDate, imageUrl, selectMovieCallback } = this.props;
     return (
       <ul>
       <p>{title} </p>
