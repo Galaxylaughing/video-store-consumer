@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CustomerRow from './CustomerRow';
 import './CustomerList.css';
+import './Home.css'; //error message formatting
 
 const CustomerList = ({selectCustomer, customers, selectedCustomer}) => {
 

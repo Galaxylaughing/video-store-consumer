@@ -9,12 +9,12 @@ const Home = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutRespons
 
       <section>
         { checkoutResponse.checkoutSuccess
-          ? <p className="checkout-success">Successfully checked out {selectedMovie.title} to {selectedCustomer.name}</p>
+          ? <p className="success-message">Successfully checked out {selectedMovie.title} to {selectedCustomer.name}</p>
           : ''
         }
 
         { checkoutResponse.checkoutError
-          ? <p className="checkout-error">Unable to checkout, encountered an error: {checkoutResponse.checkoutError}</p>
+          ? <p className="error-message">Unable to checkout, encountered an error: {checkoutResponse.checkoutError}</p>
           : ''
         }
       </section>
