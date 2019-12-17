@@ -11,6 +11,7 @@ import './App.css';
 import CustomerList from './components/CustomerList';
 import MovieList from './components/MovieList';
 import Home from './components/Home';
+import MovieSearch from './components/MovieSearch';
 
 class App extends Component {
   constructor() {
@@ -20,6 +21,9 @@ class App extends Component {
       customers: [],
       selectedCustomer: undefined,
       error: undefined,
+      movies: [],
+      selectedMovie: undefined,
+      foundMovie: undefined,
     }
   }
 
@@ -35,6 +39,16 @@ class App extends Component {
       });
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:3000/movies')
+      .then((response) => {
+        this.setState({ movies: response.data });
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
+  }
+
   selectCustomer = ( customerId ) => {
     console.log("selecting", customerId);
     
@@ -44,6 +58,28 @@ class App extends Component {
     });
 
     this.setState({selectedCustomer});
+  }
+
+  selectMovie = (movieId) => {
+    const { movies } = this.state;
+
+    const selectedMovie = movies.find((movie) => {
+      return movie.id === movieId;
+    });
+
+    this.setState({ selectedMovie });
+    console.log(selectedMovie)
+  }
+
+  findMovie = (movieTitle)  => {
+    console.log(movieTitle.title)
+    axios.get(`http://localhost:3000/movies/${movieTitle.title}`)
+      .then((response) => {
+        this.setState({ foundMovie: response.data });
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
   }
 
   render() {
@@ -70,10 +106,15 @@ class App extends Component {
 
         <Switch>
           <Route path="/search">
-            <Search />
+            <MovieSearch 
+            findMovieCallback={ this.findMovie }
+            foundMovie={this.state.foundMovie}/>
           </Route>
           <Route path="/library">
-            <MovieList />
+            <MovieList 
+            selectMovieCallback={ this.selectMovie } 
+            movies={ this.state.movies } 
+            selectedMovie={ this.state.selectedMovie }/>
           </Route>
           <Route path="/customers">
             <CustomerList 
@@ -92,11 +133,5 @@ class App extends Component {
     );
   }
 }
-
-function Search() {
-  return <h1>Search for a Movie</h1>;
-}
-
-
 
 export default App;
