@@ -10,13 +10,13 @@ class MovieList extends Component {
   makeMoviesCollection () {
     const moviesCollection = this.props.movies.map((movie, i) => {
       return <Movie 
-        selectMovieCallback={this.selectMovie}
         id={movie.id}
         title={movie.title}
         overview={movie.overview}
         releaseDate={movie.release_date}
         imageUrl={movie.image_url}
         externalId={movie.external_id}
+        selectMovieCallback={this.props.selectMovieCallback}
         key={i}
       />;
     }

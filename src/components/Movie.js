@@ -10,7 +10,6 @@ class Movie extends Component {
       <p>{overview}</p>
       <p>{releaseDate}</p>
       <img src={imageUrl} alt={`Movie`} />
-      
       <button onClick={() => { selectMovieCallback(id) }}>Select</button >
       </ul>
     )
