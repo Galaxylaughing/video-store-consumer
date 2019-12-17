@@ -10,6 +10,7 @@ import logo from './logo.svg';
 import './App.css';
 import CustomerList from './components/CustomerList';
 import MovieList from './components/MovieList';
+import MovieSearch from './components/MovieSearch';
 
 class App extends Component {
   constructor() {
@@ -92,7 +93,7 @@ class App extends Component {
 
         <Switch>
           <Route path="/search">
-            <Search />
+            <MovieSearch />
           </Route>
           <Route path="/library">
             <MovieList 
@@ -120,9 +121,6 @@ function Home() {
   return <h1>Homepage</h1>;
 }
 
-function Search() {
-  return <h1>Search for a Movie</h1>;
-}
 
 
 
