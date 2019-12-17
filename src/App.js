@@ -24,11 +24,11 @@ class App extends Component {
       error: undefined,
       movies: [],
       selectedMovie: undefined,
-      foundMovie: undefined,
       checkoutResponse: {
         checkoutSuccess: undefined,
         checkoutError: undefined,
       },
+      foundMovie: [],
     }
   }
 
