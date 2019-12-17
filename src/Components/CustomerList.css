@@ -1,7 +1,13 @@
-.customer-list {
-  width: 100%;
+.customer-table {
+  text-align: center;
+  width: 98%;
+  margin: auto;
 }
 
 .selected {
   background-color: lightgreen;
+}
+
+.header {
+  margin-left: 2em;
 }

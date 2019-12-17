@@ -19,8 +19,8 @@ const CustomerList = ({selectCustomer, customers, selectedCustomer}) => {
 
   return (
     <section>
-      <h1>Customers</h1>
-      <table className="customer-list">
+      <h1 className="header">Customers</h1>
+      <table className="customer-table">
         <thead>
           <tr>
             <th>ID</th>

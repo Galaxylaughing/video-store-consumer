@@ -4,7 +4,7 @@ import './Home.css';
 
 const Home = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutResponse}) => {
   return (
-    <section>
+    <section className="main">
       <h1>Homepage</h1>
 
       <section>

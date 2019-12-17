@@ -15,3 +15,8 @@
   text-align: center;
   margin-bottom: 2em;
 }
+
+.main {
+  width: 90%;
+  margin: auto;
+}
