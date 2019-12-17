@@ -127,18 +127,18 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <nav>
-          <ul>
-            <li>
+        <nav className="App-nav">
+          <ul className="App-nav--list">
+            <li className="App-nav--list-item">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="App-nav--list-item">
               <Link to="/search">Search</Link>
             </li>
-            <li>
+            <li className="App-nav--list-item">
               <Link to="/library">Library</Link>
             </li>
-            <li>
+            <li className="App-nav--list-item">
               <Link to="/customers">Customers</Link>
             </li>
           </ul>
