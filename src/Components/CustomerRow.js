@@ -16,6 +16,10 @@ const CustomerRow = (
     isSelected }
   ) => {
 
+  const formatDate = (date) => {
+    // TODO:
+  }
+
   const onSelectClick = () => {
     selectCustomer( id );
   }
