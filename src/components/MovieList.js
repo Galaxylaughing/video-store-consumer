@@ -26,13 +26,13 @@ class MovieList extends Component {
   makeMoviesCollection () {
     const moviesCollection = this.state.movies.map((movie, i) => {
       return <Movie 
+        selectMovieCallback={this.selectMovie}
         id={movie.id}
         title={movie.title}
         overview={movie.overview}
         releaseDate={movie.release_date}
         imageUrl={movie.image_url}
         externalId={movie.external_id}
-        selectMovieCallback={this.selectMovie}
         key={i}
       />;
     }
@@ -42,13 +42,14 @@ class MovieList extends Component {
 
 
   selectMovie = (movieId) => {
-    const { movieList } = this.state;
+    const {movies} = this.state;
 
-    const currentMovie = movieList.find((movie) => {
+    const currentMovie = movies.find((movie) => {
       return movie.id === movieId;
     });
 
     this.setState({ currentMovie });
+    console.log(currentMovie)
   }
 
   render() {
