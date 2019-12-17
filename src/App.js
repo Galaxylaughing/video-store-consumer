@@ -93,6 +93,7 @@ class App extends Component {
 
     // make dueDate a week from now
     // calculation future date from: https://stackoverflow.com/questions/1025693/how-to-get-next-week-date-in-javascript
+    const currentDate = new Date()
     const dueDate = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
     console.log("due date", dueDate);
 
