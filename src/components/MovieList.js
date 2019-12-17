@@ -42,13 +42,14 @@ class MovieList extends Component {
 
 
   selectMovie = (movieId) => {
-    const { movieList } = this.state;
+    const { movies } = this.state;
 
-    const currentMovie = movieList.find((movie) => {
+    const currentMovie = movies.find((movie) => {
       return movie.id === movieId;
     });
 
     this.setState({ currentMovie });
+    console.log(currentMovie)
   }
 
   render() {
