@@ -35,6 +35,36 @@ class MovieSearch extends Component {
     }
   }
 
+  makeSearchMovieCollection () {
+    if (this.props.foundMovie.length > 1) {
+      const moviesCollection = this.props.foundMovie.map((movie, i) => {
+        return <Movie 
+          id={movie.id}
+          title={movie.title}
+          overview={movie.overview}
+          releaseDate={movie.release_date}
+          imageUrl={movie.image_url}
+          externalId={movie.external_id}
+          selectMovieCallback={this.props.selectMovieCallback}
+          key={i}
+        />;
+      }
+      );
+      return moviesCollection
+    }else {
+      return <Movie 
+          id={this.props.foundMovie.id}
+          title={this.props.foundMovie.title}
+          overview={this.props.foundMovie.overview}
+          releaseDate={this.props.foundMovie.release_date}
+          imageUrl={this.props.foundMovie.image_url}
+          externalId={this.props.foundMovie.external_id}
+          selectMovieCallback={this.props.selectMovieCallback}selectMovieCallback={this.props.selectMovieCallback}
+          key={this.props.foundMovie.id}
+        />;
+    }
+  }
+
   render () {
     return (
       <div>
@@ -51,13 +81,9 @@ class MovieSearch extends Component {
         </div>
       </form>
       {this.props.foundMovie !== undefined ?
-        <Movie 
-        id={this.props.foundMovie.id}
-        title={this.props.foundMovie.title}
-        overview={this.props.foundMovie.overview}
-        releaseDate={this.props.foundMovie.release_date}
-        imageUrl={this.props.foundMovie.image_url}
-        /> : null
+      <ul>
+        {this.makeSearchMovieCollection() }
+      </ul>: null
       }
       </div>
 

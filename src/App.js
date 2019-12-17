@@ -23,7 +23,7 @@ class App extends Component {
       error: undefined,
       movies: [],
       selectedMovie: undefined,
-      foundMovie: undefined,
+      foundMovie: [],
     }
   }
 
