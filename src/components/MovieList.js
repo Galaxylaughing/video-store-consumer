@@ -14,7 +14,7 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost3000/movies')
+    axios.get('http://localhost:3000/movies')
       .then((response) => {
         this.setState({ movies: response.data });
       })
