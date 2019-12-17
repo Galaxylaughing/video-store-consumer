@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import axios from 'axios';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import CustomerList from './components/CustomerList';
 import MovieList from './components/MovieList';
@@ -38,7 +38,7 @@ class App extends Component {
         this.setState({ error: error.message });
       });
 
-      axios.get('http://localhost:3000/movies')
+    axios.get('http://localhost:3000/movies')
       .then((response) => {
         this.setState({ movies: response.data });
       })
