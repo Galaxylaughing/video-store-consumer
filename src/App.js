@@ -10,6 +10,7 @@ import logo from './logo.svg';
 import './App.css';
 import CustomerList from './components/CustomerList';
 import MovieList from './components/MovieList';
+import Home from './components/Home';
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,7 @@ class App extends Component {
 
     this.state = {
       customers: [],
-      selectCustomer: undefined,
+      selectedCustomer: undefined,
       error: undefined,
     }
   }
@@ -82,16 +83,14 @@ class App extends Component {
             />
           </Route>
           <Route path="/">
-            <Home />
+            <Home 
+              selectedCustomer={ this.state.selectedCustomer }
+            />
           </Route>
         </Switch>
       </Router>
     );
   }
-}
-
-function Home() {
-  return <h1>Homepage</h1>;
 }
 
 function Search() {
