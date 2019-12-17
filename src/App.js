@@ -37,10 +37,8 @@ class App extends Component {
       .catch((error) => {
         this.setState({ error: error.message });
       });
-  }
 
-  componentDidMount() {
-    axios.get('http://localhost:3000/movies')
+      axios.get('http://localhost:3000/movies')
       .then((response) => {
         this.setState({ movies: response.data });
       })
