@@ -91,13 +91,6 @@ class App extends Component {
     const customerId = selectedCustomer.id;
     console.log(`checking out ${movieTitle} to ${customerId}`);
 
-    // make checkoutDate
-    let currentDate = new Date()
-    const checkoutDate = currentDate.getDate();
-    const checkoutMonth = currentDate.getMonth() + 1; //months are 0-indexed in JS
-    const checkoutYear = currentDate.getFullYear();
-    console.log("today", checkoutDate, checkoutMonth, checkoutYear);
-
     // make dueDate a week from now
     // calculation future date from: https://stackoverflow.com/questions/1025693/how-to-get-next-week-date-in-javascript
     const dueDate = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
