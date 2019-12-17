@@ -12,7 +12,8 @@ const CustomerRow = (
     movies_checkout_out_count, 
     phone, 
     registered_at,
-    selectCustomer }
+    selectCustomer,
+    isSelected }
   ) => {
 
   const onSelectClick = () => {
@@ -20,7 +21,7 @@ const CustomerRow = (
   }
 
   return (
-    <tr>
+    <tr className={ isSelected ? "selected" : "" }>
       <td>{ id }</td>
       <td>{ name }</td>
       <td>{ movies_checkout_out_count > 0 ? movies_checkout_out_count : "none" }</td>
@@ -45,6 +46,7 @@ CustomerRow.propTypes = {
   phone: PropTypes.string,
   registered_at: PropTypes.string,
   selectCustomer: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool
 }
 
 export default CustomerRow;

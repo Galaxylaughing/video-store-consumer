@@ -10,3 +10,7 @@
   text-align: center;
   margin-bottom: 2em;
 }
+
+.selected {
+  background-color: lightgreen;
+}
