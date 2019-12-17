@@ -106,7 +106,14 @@ class App extends Component {
     axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out`, checkoutParams)
       .then((response) => {
         console.log(response.data);
+
+        // add one to customer's movies checked out count
+        const { customers } = this.state;
+        const customer = customers.find((customer) => customer.id === customerId)
+        customer.movies_checked_out_count += 1;
+
         this.setState({
+          customers,
           checkoutResponse: {
             checkoutSuccess: response.data, // returns empty object
             checkoutError: undefined,

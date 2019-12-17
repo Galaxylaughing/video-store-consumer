@@ -20,8 +20,8 @@ const Home = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutRespons
       </section>
 
       <section>
-        <p>Selected Customer: { selectedCustomer ? selectedCustomer.name : "none" }</p>
-        <p>Selected Movie: { selectedMovie ? selectedMovie.title : "none" }</p>
+        <p>Selected Customer: { selectedCustomer ? <span>{selectedCustomer.name}, {selectedCustomer.movies_checked_out_count} movies checked out</span> : "none" }</p>
+        <p>Selected Movie: { selectedMovie ? <span>{selectedMovie.title}, {selectedMovie.inventory}</span> : "none" }</p>
 
         { (selectedCustomer && selectedMovie)
           ? <button onClick={onCheckoutClick}>Checkout '{selectedMovie.title}' to {selectedCustomer.name}</button>
