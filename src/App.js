@@ -124,6 +124,7 @@ class App extends Component {
           <Route path="/">
             <Home 
               selectedCustomer={ this.state.selectedCustomer }
+              selectedMovie={ this.state.selectedMovie }
             />
           </Route>
         </Switch>
