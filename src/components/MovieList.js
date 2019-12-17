@@ -5,26 +5,10 @@ import axios from 'axios';
 class MovieList extends Component {
   constructor() {
     super();
-
-    this.state = {
-      movies: [],
-      eror: undefined,
-      selectedMovie: undefined,
-    };
-  }
-
-  componentDidMount() {
-    axios.get('http://localhost:3000/movies')
-      .then((response) => {
-        this.setState({ movies: response.data });
-      })
-      .catch((error) => {
-        this.setState({ error: error.message });
-      });
   }
 
   makeMoviesCollection () {
-    const moviesCollection = this.state.movies.map((movie, i) => {
+    const moviesCollection = this.props.movies.map((movie, i) => {
       return <Movie 
         selectMovieCallback={this.selectMovie}
         id={movie.id}
@@ -38,18 +22,6 @@ class MovieList extends Component {
     }
     );
     return moviesCollection
-  }
-
-
-  selectMovie = (movieId) => {
-    const {movies} = this.state;
-
-    const currentMovie = movies.find((movie) => {
-      return movie.id === movieId;
-    });
-
-    this.setState({ currentMovie });
-    console.log(currentMovie)
   }
 
   render() {

@@ -19,6 +19,8 @@ class App extends Component {
       customers: [],
       selectCustomer: undefined,
       error: undefined,
+      movies: [],
+      selectedMovie: undefined,
     }
   }
 
@@ -34,6 +36,16 @@ class App extends Component {
       });
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:3000/movies')
+      .then((response) => {
+        this.setState({ movies: response.data });
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
+  }
+
   selectCustomer = ( customerId ) => {
     console.log("selecting", customerId);
     
@@ -43,6 +55,17 @@ class App extends Component {
     });
 
     this.setState({selectedCustomer});
+  }
+
+  selectMovie = (movieId) => {
+    const { movies } = this.state;
+
+    const selectedMovie = movies.find((movie) => {
+      return movie.id === movieId;
+    });
+
+    this.setState({ selectedMovie });
+    console.log(currentMovie)
   }
 
   render() {
@@ -72,7 +95,10 @@ class App extends Component {
             <Search />
           </Route>
           <Route path="/library">
-            <MovieList />
+            <MovieList 
+            selectMovieCallback={ this.selectMovie } 
+            movies={ this.state.movies } 
+            selectedMovie={ this.state.selectedMovie }/>
           </Route>
           <Route path="/customers">
             <CustomerList 
