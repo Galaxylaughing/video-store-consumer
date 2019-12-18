@@ -46,6 +46,7 @@ class MovieSearch extends Component {
           imageUrl={movie.image_url}
           externalId={movie.external_id}
           selectMovieCallback={this.props.selectMovieCallback}
+          addMovieCallback={this.props.addMovieCallback}
           key={i}
         />;
       }

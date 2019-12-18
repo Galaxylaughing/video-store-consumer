@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Movie extends Component {
 
   render() {
-    const { id, title, overview, releaseDate, imageUrl, selectMovieCallback } = this.props;
+    const { id, title, overview, releaseDate, imageUrl, selectMovieCallback, addMovieCallback } = this.props;
     return (
       <ul>
       <p>{title} </p>
@@ -15,7 +15,11 @@ class Movie extends Component {
       {selectMovieCallback !== undefined ? 
       <button onClick={() => { selectMovieCallback(id) }}>Select</button >: null
       }
+      {addMovieCallback !== undefined ? 
+      <button onClick={() => { addMovieCallback({title: title, overview: overview, release_date: releaseDate, image_url: imageUrl}) }}>Add</button >: null
+      }
       </ul>
+      
     )
   }
 }
