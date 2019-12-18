@@ -12,6 +12,7 @@ import CustomerList from './components/CustomerList';
 import MovieList from './components/MovieList';
 import Home from './components/Home';
 import MovieSearch from './components/MovieSearch';
+import { throwStatement } from '@babel/types';
 
 class App extends Component {
   constructor() {
@@ -23,6 +24,10 @@ class App extends Component {
       error: undefined,
       movies: [],
       selectedMovie: undefined,
+      checkoutResponse: {
+        checkoutSuccess: undefined,
+        checkoutError: undefined,
+      },
       foundMovie: [],
       success: undefined,
     }
@@ -93,6 +98,52 @@ class App extends Component {
       });
   }
 
+  onCheckoutClick = () => {
+    const { selectedMovie, selectedCustomer } = this.state;
+    const movieTitle = selectedMovie.title;
+    const customerId = selectedCustomer.id;
+    console.log(`checking out ${movieTitle} to ${customerId}`);
+
+    // make dueDate a week from now
+    // calculation future date from: https://stackoverflow.com/questions/1025693/how-to-get-next-week-date-in-javascript
+    const currentDate = new Date()
+    const dueDate = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+    console.log("due date", dueDate);
+
+    // set up params for axios call
+    const checkoutParams = {
+      customer_id: customerId,
+      due_date: dueDate,
+    }
+    // make axios post request
+    axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out`, checkoutParams)
+      .then((response) => {
+        console.log(response.data);
+
+        // add one to customer's movies checked out count
+        const { customers } = this.state;
+        const customer = customers.find((customer) => customer.id === customerId)
+        customer.movies_checked_out_count += 1;
+
+        this.setState({
+          customers,
+          checkoutResponse: {
+            checkoutSuccess: response.data, // returns empty object
+            checkoutError: undefined,
+          }
+        })
+      })
+      .catch((error) => {
+        console.log(error.message);
+        this.setState({
+          checkoutResponse: {
+            checkoutSuccess: undefined,
+            checkoutError: error.message,
+          }
+        })
+      });
+  }
+
   render() {
     return (
       <Router>
@@ -138,6 +189,9 @@ class App extends Component {
           <Route path="/">
             <Home 
               selectedCustomer={ this.state.selectedCustomer }
+              selectedMovie={ this.state.selectedMovie }
+              onCheckoutClick={ this.onCheckoutClick }
+              checkoutResponse={ this.state.checkoutResponse }
             />
           </Route>
         </Switch>
