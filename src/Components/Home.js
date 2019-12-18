@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Home.css';
+import '../App.css';
 
 const Home = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutResponse}) => {
   return (
@@ -20,8 +20,8 @@ const Home = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutRespons
       </section>
 
       <section>
-        <p>Selected Customer: { selectedCustomer ? selectedCustomer.name : "none" }</p>
-        <p>Selected Movie: { selectedMovie ? selectedMovie.title : "none" }</p>
+        <p>Selected Customer: { selectedCustomer ? <span>{selectedCustomer.name}, {selectedCustomer.movies_checked_out_count} movies checked out</span> : "none" }</p>
+        <p>Selected Movie: { selectedMovie ? <span>{selectedMovie.title}, {selectedMovie.inventory}</span> : "none" }</p>
 
         { (selectedCustomer && selectedMovie)
           ? <button onClick={onCheckoutClick}>Checkout '{selectedMovie.title}' to {selectedCustomer.name}</button>
@@ -41,10 +41,3 @@ Home.propTypes = {
 }
 
 export default Home;
-
-// params[:customer_id]
-// params[:due_date]
-// params[:title]
-
-// http://localhost:3000/rentals/Jaws/check-out?customer_id=1&due_date=2019/12/18
-// http://localhost:3000/:title/check-out?customer_id=:customer_id&due_date=:due_date

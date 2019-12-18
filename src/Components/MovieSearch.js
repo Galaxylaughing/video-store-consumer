@@ -35,6 +35,72 @@ class MovieSearch extends Component {
     }
   }
 
+  makeSearchMovieCollection () {
+    console.log("SEARCHING", this.props.foundMovie);
+
+    if (this.props.foundMovie.not_in_database === 'true') {
+      // if found in external API
+      if (this.props.foundMovie.movie.length > 1) {
+        const moviesCollection = this.props.foundMovie.movie.map((movie, i) => {
+          return <Movie 
+            id={movie.id}
+            title={movie.title}
+            overview={movie.overview}
+            releaseDate={movie.release_date}
+            imageUrl={movie.image_url}
+            externalId={movie.external_id}
+            selectMovieCallback={this.props.selectMovieCallback}
+            addMovieCallback={this.props.addMovieCallback}
+            key={i}
+          />;
+        }
+        );
+        return moviesCollection
+      } else {
+        return <Movie 
+          id={this.props.foundMovie.movie.id}
+          title={this.props.foundMovie.movie.title}
+          overview={this.props.foundMovie.movie.overview}
+          releaseDate={this.props.foundMovie.movie.release_date}
+          imageUrl={this.props.foundMovie.movie.image_url}
+          externalId={this.props.foundMovie.movie.external_id}
+          selectMovieCallback={this.props.selectMovieCallback}
+          addMovieCallback={this.props.addMovieCallback}
+          key={this.props.foundMovie.movie.id}
+        />;
+      }
+    } else {
+      // if found in internal API
+      if (this.props.foundMovie.length > 1) {
+        const moviesCollection = this.props.foundMovie.map((movie, i) => {
+          return <Movie 
+            id={movie.id}
+            title={movie.title}
+            overview={movie.overview}
+            releaseDate={movie.release_date}
+            imageUrl={movie.image_url}
+            externalId={movie.external_id}
+            selectMovieCallback={this.props.selectMovieCallback}
+            key={i}
+          />;
+        }
+        );
+        return moviesCollection
+      } else {
+        return <Movie 
+          id={this.props.foundMovie.id}
+          title={this.props.foundMovie.title}
+          overview={this.props.foundMovie.overview}
+          releaseDate={this.props.foundMovie.release_date}
+          imageUrl={this.props.foundMovie.image_url}
+          externalId={this.props.foundMovie.external_id}
+          selectMovieCallback={this.props.selectMovieCallback}
+          key={this.props.foundMovie.id}
+        />;
+      }
+    }
+  }
+
   render () {
     return (
       <div>
@@ -51,13 +117,9 @@ class MovieSearch extends Component {
         </div>
       </form>
       {this.props.foundMovie !== undefined ?
-        <Movie 
-        id={this.props.foundMovie.id}
-        title={this.props.foundMovie.title}
-        overview={this.props.foundMovie.overview}
-        releaseDate={this.props.foundMovie.release_date}
-        imageUrl={this.props.foundMovie.image_url}
-        /> : null
+      <ul>
+        {this.makeSearchMovieCollection() }
+      </ul>: null
       }
       </div>
 

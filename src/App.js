@@ -12,7 +12,7 @@ import CustomerList from './components/CustomerList';
 import MovieList from './components/MovieList';
 import Home from './components/Home';
 import MovieSearch from './components/MovieSearch';
-import { throwStatement } from '@babel/types';
+import FlashMessage from './components/FlashMessage';
 
 class App extends Component {
   constructor() {
@@ -24,11 +24,12 @@ class App extends Component {
       error: undefined,
       movies: [],
       selectedMovie: undefined,
-      foundMovie: undefined,
       checkoutResponse: {
         checkoutSuccess: undefined,
         checkoutError: undefined,
       },
+      foundMovie: [],
+      success: undefined,
     }
   }
 
@@ -85,6 +86,18 @@ class App extends Component {
       });
   }
 
+  addMovie = (movie)  => {
+    axios.post(`http://localhost:3000/movies/`, movie)
+      .then((response) => {
+        let { movies } = this.state;
+        movies.push(movie);
+        this.setState({ movies: movies, success: response.data });
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
+  }
+
   onCheckoutClick = () => {
     const { selectedMovie, selectedCustomer } = this.state;
     const movieTitle = selectedMovie.title;
@@ -106,7 +119,14 @@ class App extends Component {
     axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out`, checkoutParams)
       .then((response) => {
         console.log(response.data);
+
+        // add one to customer's movies checked out count
+        const { customers } = this.state;
+        const customer = customers.find((customer) => customer.id === customerId)
+        customer.movies_checked_out_count += 1;
+
         this.setState({
+          customers,
           checkoutResponse: {
             checkoutSuccess: response.data, // returns empty object
             checkoutError: undefined,
@@ -144,13 +164,15 @@ class App extends Component {
           </ul>
         </nav>
 
-        { this.state.error ? <div className="error-message">{this.state.error}</div> : "" }
+        { this.state.error ? <FlashMessage messageContents={this.state.error} messageClass="error-message" /> : "" }
+        { this.state.success ? <FlashMessage messageContents={this.state.success} messageClass="success-message" /> : "" }
 
         <Switch>
           <Route path="/search">
             <MovieSearch 
             findMovieCallback={ this.findMovie }
-            foundMovie={this.state.foundMovie}/>
+            foundMovie={this.state.foundMovie}
+            addMovieCallback={this.addMovie}/>
           </Route>
           <Route path="/library">
             <MovieList 
