@@ -38,7 +38,9 @@ class MovieSearch extends Component {
   makeSearchMovieCollection () {
     console.log("SEARCHING", this.props.foundMovie);
 
-    if (this.props.foundMovie.length > 1) {
+    if (this.props.foundMovie === null ) {
+      return <div>This movie could not be found.</div>;
+    } else if (this.props.foundMovie.length > 1) {
       const moviesCollection = this.props.foundMovie.map((movie, i) => {
         return <Movie 
           id={movie.id}
@@ -54,7 +56,7 @@ class MovieSearch extends Component {
       }
       );
       return moviesCollection
-    } else if (this.props.foundMovie.in_database !== undefined && this.props.foundMovie.in_database !== false) {
+    } else if (this.props.foundMovie !== null && this.props.foundMovie.in_database !== undefined && this.props.foundMovie.in_database !== false) {
       return <Movie 
           id={this.props.foundMovie.movie.id}
           title={this.props.foundMovie.movie.title}

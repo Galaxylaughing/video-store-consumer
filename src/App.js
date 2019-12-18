@@ -77,7 +77,8 @@ class App extends Component {
         this.setState({ foundMovie: response.data });
       })
       .catch((error) => {
-        this.setState({ error: error.message });
+        console.log(error.response);
+        this.setState({ error: `${error.message}; ${error.response.data.errors.title}` });
       });
   }
 
