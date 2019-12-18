@@ -9,7 +9,10 @@ const Checkout = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutRes
     <div>
       <section className="App-checkout">
         <div className="App-checkout-details">
-          <p>Selected Customer: { selectedCustomer ? <span>{selectedCustomer.name}, {selectedCustomer.movies_checked_out_count} movies checked out</span> : "none" }</p>
+          <p>Selected Customer: { selectedCustomer 
+            ? <span>{selectedCustomer.name}, {selectedCustomer.movies_checked_out_count} 
+              {selectedCustomer.movies_checked_out_count === 1 ? "movie" : "movies"} checked out</span> 
+            : "none" }</p>
           <p>Selected Movie: { selectedMovie ? <span>{selectedMovie.title}</span> : "none" }</p>
         </div>
 
