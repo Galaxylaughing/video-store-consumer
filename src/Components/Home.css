@@ -1,22 +1,8 @@
-.error-message { 
-  width: 100%;
-  padding: 1em;
-  background-color: tomato;
-  color: white;
-  text-align: center;
-  margin-bottom: 2em;
-}
-
-.success-message { 
-  width: 100%;
-  padding: 1em;
-  background-color: lightgreen;
-  color: white;
-  text-align: center;
-  margin-bottom: 2em;
-}
-
 .main {
-  width: 90%;
+  width: 100%;
+}
+
+.main-body {
+  width: 95%;
   margin: auto;
 }

@@ -17,11 +17,3 @@
 .selected button:focus {
   background-color: #c9ffc9;
 }
-
-.header {
-  margin: 2em;
-  text-align: center;
-
-  padding: 1em;
-  background-color: lightgray;
-}

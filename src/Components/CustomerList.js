@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CustomerRow from './CustomerRow';
 import './CustomerList.css';
-import '../App.css'; //error message formatting
+import '../App.css'; //error message, header formatting
 
 const CustomerList = ({selectCustomer, customers, selectedCustomer}) => {
 

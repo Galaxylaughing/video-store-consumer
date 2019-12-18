@@ -13,6 +13,7 @@ import MovieList from './components/MovieList';
 import Home from './components/Home';
 import MovieSearch from './components/MovieSearch';
 import FlashMessage from './components/FlashMessage';
+import Checkout from './components/Checkout';
 
 class App extends Component {
   constructor() {
@@ -164,6 +165,13 @@ class App extends Component {
           </ul>
         </nav>
 
+        <Checkout 
+          selectedCustomer={ this.state.selectedCustomer }
+          selectedMovie={ this.state.selectedMovie }
+          onCheckoutClick={ this.onCheckoutClick }
+          checkoutResponse={ this.state.checkoutResponse }
+        />
+
         { this.state.error ? <FlashMessage messageContents={this.state.error} messageClass="error-message" /> : "" }
         { this.state.success ? <FlashMessage messageContents={this.state.success} messageClass="success-message" /> : "" }
 
@@ -188,12 +196,7 @@ class App extends Component {
             />
           </Route>
           <Route path="/">
-            <Home 
-              selectedCustomer={ this.state.selectedCustomer }
-              selectedMovie={ this.state.selectedMovie }
-              onCheckoutClick={ this.onCheckoutClick }
-              checkoutResponse={ this.state.checkoutResponse }
-            />
+            <Home />
           </Route>
         </Switch>
       </Router>
