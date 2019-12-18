@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Home.css';
+import '../App.css';
 
 const Home = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutResponse}) => {
   return (
@@ -41,10 +41,3 @@ Home.propTypes = {
 }
 
 export default Home;
-
-// params[:customer_id]
-// params[:due_date]
-// params[:title]
-
-// http://localhost:3000/rentals/Jaws/check-out?customer_id=1&due_date=2019/12/18
-// http://localhost:3000/:title/check-out?customer_id=:customer_id&due_date=:due_date
