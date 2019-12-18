@@ -4,10 +4,14 @@ exports[`MovieSearch that it matches the existing snapshot 1`] = `
 <DocumentFragment>
   <div>
     <form>
-      <h3>
+      <h2
+        class="header"
+      >
         Search for a movie
-      </h3>
-      <div>
+      </h2>
+      <div
+        class="search-bar"
+      >
         <label>
           Title: 
         </label>

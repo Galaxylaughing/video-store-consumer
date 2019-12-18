@@ -37,7 +37,9 @@ test('The "onSelectClick" function is called when the `select` button is clicked
     state={"Jal"} 
     postal_code={"44600"}
     phone={"1781293691"}
-    onSelectClick={selectCustomer}
+    registered_at={"2009-12-09"}
+    isSelected={false}
+    selectCustomer={selectCustomer}
   />);
 
   // Act
