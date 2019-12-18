@@ -38,24 +38,26 @@ class MovieSearch extends Component {
   makeSearchMovieCollection () {
     console.log("SEARCHING", this.props.foundMovie);
 
-    if (this.props.foundMovie.length > 1) {
-      const moviesCollection = this.props.foundMovie.map((movie, i) => {
+    if (this.props.foundMovie.not_in_database === 'true') {
+      // if found in external API
+      if (this.props.foundMovie.movie.length > 1) {
+        const moviesCollection = this.props.foundMovie.movie.map((movie, i) => {
+          return <Movie 
+            id={movie.id}
+            title={movie.title}
+            overview={movie.overview}
+            releaseDate={movie.release_date}
+            imageUrl={movie.image_url}
+            externalId={movie.external_id}
+            selectMovieCallback={this.props.selectMovieCallback}
+            addMovieCallback={this.props.addMovieCallback}
+            key={i}
+          />;
+        }
+        );
+        return moviesCollection
+      } else {
         return <Movie 
-          id={movie.id}
-          title={movie.title}
-          overview={movie.overview}
-          releaseDate={movie.release_date}
-          imageUrl={movie.image_url}
-          externalId={movie.external_id}
-          selectMovieCallback={this.props.selectMovieCallback}
-          addMovieCallback={this.props.addMovieCallback}
-          key={i}
-        />;
-      }
-      );
-      return moviesCollection
-    } else if (this.props.foundMovie.in_database !== undefined && this.props.foundMovie.in_database !== false) {
-      return <Movie 
           id={this.props.foundMovie.movie.id}
           title={this.props.foundMovie.movie.title}
           overview={this.props.foundMovie.movie.overview}
@@ -66,8 +68,26 @@ class MovieSearch extends Component {
           addMovieCallback={this.props.addMovieCallback}
           key={this.props.foundMovie.movie.id}
         />;
+      }
     } else {
-      return <Movie 
+      // if found in internal API
+      if (this.props.foundMovie.length > 1) {
+        const moviesCollection = this.props.foundMovie.map((movie, i) => {
+          return <Movie 
+            id={movie.id}
+            title={movie.title}
+            overview={movie.overview}
+            releaseDate={movie.release_date}
+            imageUrl={movie.image_url}
+            externalId={movie.external_id}
+            selectMovieCallback={this.props.selectMovieCallback}
+            key={i}
+          />;
+        }
+        );
+        return moviesCollection
+      } else {
+        return <Movie 
           id={this.props.foundMovie.id}
           title={this.props.foundMovie.title}
           overview={this.props.foundMovie.overview}
@@ -77,6 +97,7 @@ class MovieSearch extends Component {
           selectMovieCallback={this.props.selectMovieCallback}
           key={this.props.foundMovie.id}
         />;
+      }
     }
   }
 
