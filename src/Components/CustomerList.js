@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CustomerRow from './CustomerRow';
 import './CustomerList.css';
-import '../App.css'; //error message formatting
+import '../App.css'; //error message, header formatting
 
 const CustomerList = ({selectCustomer, customers, selectedCustomer}) => {
 
@@ -19,7 +19,7 @@ const CustomerList = ({selectCustomer, customers, selectedCustomer}) => {
 
   return (
     <section>
-      <h1 className="header">Customers</h1>
+      <h2 className="header">Customers</h2>
       <table className="customer-table">
         <thead>
           <tr>

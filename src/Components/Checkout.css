@@ -1,0 +1,28 @@
+.App-checkout {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-checkout-details {
+  margin-right: 1em;
+}
+
+.App-checkout-button button {
+  margin-left: 1.5em;
+
+  padding: 0.8em;
+  font-size: 1em;
+  background-color: #acf2ac;
+  border-radius: 0.2em;
+  border: none;
+}
+
+.App-checkout-button button:hover {
+  cursor: pointer;
+  background-color: lightgreen;
+}

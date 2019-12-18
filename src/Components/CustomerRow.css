@@ -1,0 +1,11 @@
+.customer-table--select-button {
+  background-color: lightgray;
+  padding: 0.4em 1em;
+  border: none;
+  border-radius: 0.2em;
+  font-size: 1em;
+}
+
+.customer-table--select-button:hover {
+  cursor: pointer;
+}
