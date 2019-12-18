@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 import '../App.css';
+import './MovieSearch.css';
 
 class MovieSearch extends Component {
 
@@ -107,7 +108,7 @@ class MovieSearch extends Component {
       <div>
       <form onSubmit={this.onSubmit}>
         <h3 className="header">Search for a movie</h3>
-        <div>
+        <div className="search-bar">
           <label>Title: </label>
           <input
             title="title"
