@@ -83,7 +83,13 @@ class App extends Component {
         this.setState({ foundMovie: response.data });
       })
       .catch((error) => {
-        this.setState({ error: error.message });
+        let errorMessage = '';
+        if (error.response.data.errors) {
+          errorMessage = error.response.data.errors.title;
+        } else {
+          errorMessage = error.message;
+        }
+        this.setState({ error: errorMessage });
       });
   }
 
