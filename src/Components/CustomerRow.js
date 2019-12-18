@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './CustomerRow.css';
 
 const CustomerRow = (
   { id, 
@@ -17,7 +18,8 @@ const CustomerRow = (
   ) => {
 
   const formatDate = (date) => {
-    // TODO:
+    const formattedDate = date.match(/^\d{4}-\d{2}-\d{2}/);
+    return formattedDate;
   }
 
   const onSelectClick = () => {
@@ -28,12 +30,12 @@ const CustomerRow = (
     <tr className={ isSelected ? "selected" : "" }>
       <td>{ id }</td>
       <td>{ name }</td>
-      <td>{ movies_checked_out_count > 0 ? movies_checked_out_count : "none" }</td>
+      <td>{ movies_checked_out_count }</td>
       <td>$ { account_credit }</td>
-      <td>{ address } { city }, { state } { postal_code }</td>
+      <td>{ address } <br /> { city }, { state } { postal_code }</td>
       <td>{ phone }</td>
-      <td>{ registered_at }</td>
-      <td><button onClick={ onSelectClick }>Select</button></td>
+      <td>{ formatDate(registered_at) }</td>
+      <td><button onClick={ onSelectClick } className="customer-table--select-button">Select</button></td>
     </tr>
   );
 }

@@ -2,12 +2,26 @@
   text-align: center;
   width: 98%;
   margin: auto;
+  margin-bottom: 2em;
 }
 
-.selected {
+.customer-table td {
+  height: 50px;
+}
+
+.selected,
+.selected button {
   background-color: lightgreen;
 }
 
+.selected button:focus {
+  background-color: #c9ffc9;
+}
+
 .header {
-  margin-left: 2em;
+  margin: 2em;
+  text-align: center;
+
+  padding: 1em;
+  background-color: lightgray;
 }
