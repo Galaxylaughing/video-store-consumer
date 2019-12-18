@@ -6,12 +6,14 @@ import {
   Link
 } from "react-router-dom";
 import axios from 'axios';
+// import FlashMessage from 'react-flash-message';
 // import logo from './logo.svg';
 import './App.css';
 import CustomerList from './components/CustomerList';
 import MovieList from './components/MovieList';
 import Home from './components/Home';
 import MovieSearch from './components/MovieSearch';
+import FlashMessage from './components/FlashMessage';
 
 class App extends Component {
   constructor() {
@@ -119,8 +121,8 @@ class App extends Component {
           </ul>
         </nav>
 
-        { this.state.error ? <div className="error-message">{this.state.error}</div> : "" }
-        { this.state.success ? <div className="success-message">{this.state.success}</div> : "" }
+        { this.state.error ? <FlashMessage messageContents={this.state.error} messageClass={"error-message"} /> : "" }
+        { this.state.success ? <FlashMessage messageContents={this.state.success} messageClass={"success-message"} /> : "" }
 
         <Switch>
           <Route path="/search">
