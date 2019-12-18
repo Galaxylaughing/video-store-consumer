@@ -33,9 +33,9 @@ const CustomerList = ({selectCustomer, customers, selectedCustomer}) => {
             <th>Select Customer</th>
           </tr>
         </thead>
-        <tbody>
+        <section>
           { makeCustomerList(customers) }
-        </tbody>
+        </section>
       </table>
 
     </section>
