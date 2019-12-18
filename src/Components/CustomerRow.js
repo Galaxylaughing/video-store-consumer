@@ -9,7 +9,7 @@ const CustomerRow = (
     city, 
     state, 
     postal_code, 
-    movies_checkout_out_count, 
+    movies_checked_out_count, 
     phone, 
     registered_at,
     selectCustomer,
@@ -28,7 +28,7 @@ const CustomerRow = (
     <tr className={ isSelected ? "selected" : "" }>
       <td>{ id }</td>
       <td>{ name }</td>
-      <td>{ movies_checkout_out_count > 0 ? movies_checkout_out_count : "none" }</td>
+      <td>{ movies_checked_out_count > 0 ? movies_checked_out_count : "none" }</td>
       <td>$ { account_credit }</td>
       <td>{ address } { city }, { state } { postal_code }</td>
       <td>{ phone }</td>
@@ -46,7 +46,7 @@ CustomerRow.propTypes = {
   city: PropTypes.string,
   state: PropTypes.string,
   postal_code: PropTypes.string,
-  movies_checkout_out_count: PropTypes.number,
+  movies_checked_out_count: PropTypes.number,
   phone: PropTypes.string,
   registered_at: PropTypes.string,
   selectCustomer: PropTypes.func.isRequired,
