@@ -86,7 +86,12 @@ class App extends Component {
       .then((response) => {
         let { movies } = this.state;
         movies.push(movie);
-        this.setState({ movies: movies, success: response.data });
+
+        this.setState({ 
+            movies: movies, 
+            success: `${movie.title} was successfully added to the library`,
+            foundMovie: [],
+        });
       })
       .catch((error) => {
         this.setState({ error: error.message });
@@ -114,6 +119,7 @@ class App extends Component {
         </nav>
 
         { this.state.error ? <div className="error-message">{this.state.error}</div> : "" }
+        { this.state.success ? <div className="success-message">{this.state.success}</div> : "" }
 
         <Switch>
           <Route path="/search">
