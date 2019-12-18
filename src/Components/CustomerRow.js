@@ -21,11 +21,7 @@ const CustomerRow = (
     const formattedDate = date.match(/^\d{4}-\d{2}-\d{2}/);
     return formattedDate;
   }
-
-  const onSelectClick = () => {
-    selectCustomer( id );
-  }
-
+  
   return (
     <tr className={ isSelected ? "selected" : "" }>
       <td>{ id }</td>
@@ -35,7 +31,7 @@ const CustomerRow = (
       <td>{ address } <br /> { city }, { state } { postal_code }</td>
       <td>{ phone }</td>
       <td>{ formatDate(registered_at) }</td>
-      <td><button onClick={ onSelectClick } className="customer-table--select-button">Select</button></td>
+      <td><button onClick={ () => selectCustomer( id ) } className="customer-table--select-button">Select</button></td>
     </tr>
   );
 }
