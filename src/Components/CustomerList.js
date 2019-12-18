@@ -19,7 +19,7 @@ const CustomerList = ({selectCustomer, customers, selectedCustomer}) => {
 
   return (
     <section>
-      <h1 className="header">Customers</h1>
+      <h2 className="header">Customers</h2>
       <table className="customer-table">
         <thead>
           <tr>
