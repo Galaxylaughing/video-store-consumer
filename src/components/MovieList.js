@@ -27,7 +27,7 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        <ul>
+        <ul className="movie-list">
           {this.makeMoviesCollection()}
         </ul>
       </div>
