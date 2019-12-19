@@ -94,7 +94,7 @@ class App extends Component {
       .then((response) => {
         let { movies } = this.state;
         movies.push(movie);
-        this.setState({ movies: movies, success: response.data });
+        this.setState({ movies: movies, success: `Successfully added movie ${response.data.title}` });
       })
       .catch((error) => {
         this.setState({ error: error.message });
