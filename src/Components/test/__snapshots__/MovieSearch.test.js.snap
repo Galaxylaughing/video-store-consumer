@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieSearch that it matches the existing snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <form>
+      <h2
+        class="header"
+      >
+        Search for a movie
+      </h2>
+      <div
+        class="search-bar"
+      >
+        <label>
+          Title: 
+        </label>
+        <input
+          title="title"
+          value=""
+        />
+        <button>
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
