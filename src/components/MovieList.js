@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 import axios from 'axios';
+import './MovieList.css';
 
 class MovieList extends Component {
   constructor() {
@@ -27,7 +28,7 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        <ul className="movie-list">
+        <ul class="movie-list">
           {this.makeMoviesCollection()}
         </ul>
       </div>
