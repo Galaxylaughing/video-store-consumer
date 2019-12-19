@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../App.css';
 import './Checkout.css';
 
-const Checkout = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutResponse}) => {
+const Checkout = ({selectedCustomer, selectedMovie, onCheckoutClick}) => {
   console.log(selectedMovie);
   return (
     <div>
@@ -23,18 +23,6 @@ const Checkout = ({selectedCustomer, selectedMovie, onCheckoutClick, checkoutRes
           }
         </div>
       </section>
-
-      <section>
-        { checkoutResponse.checkoutSuccess
-          ? <p className="success-message">Successfully checked out {selectedMovie.title} to {selectedCustomer.name}</p>
-          : ''
-        }
-
-        { checkoutResponse.checkoutError
-          ? <p className="error-message">Unable to checkout, encountered an error: {checkoutResponse.checkoutError}</p>
-          : ''
-        }
-      </section>
     </div>
   );
 }
@@ -43,7 +31,6 @@ Checkout.propTypes = {
   selectedCustomer: PropTypes.object,
   selectedMovie: PropTypes.object,
   onCheckoutClick: PropTypes.func.isRequired,
-  checkoutResponse: PropTypes.object,
 }
 
 export default Checkout;

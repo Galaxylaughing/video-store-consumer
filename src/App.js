@@ -25,10 +25,6 @@ class App extends Component {
       error: undefined,
       movies: [],
       selectedMovie: undefined,
-      checkoutResponse: {
-        checkoutSuccess: undefined,
-        checkoutError: undefined,
-      },
       foundMovie: [],
       success: undefined,
     }
@@ -132,21 +128,18 @@ class App extends Component {
         const customer = customers.find((customer) => customer.id === customerId)
         customer.movies_checked_out_count += 1;
 
+        const { selectedMovie, selectedCustomer } = this.state;
         this.setState({
           customers,
-          checkoutResponse: {
-            checkoutSuccess: response.data, // returns empty object
-            checkoutError: undefined,
-          }
+          success: `Successfully checked out ${selectedMovie.title} to ${selectedCustomer.name}`,
+          error: undefined,
         })
       })
       .catch((error) => {
         console.log(error.message);
         this.setState({
-          checkoutResponse: {
-            checkoutSuccess: undefined,
-            checkoutError: error.message,
-          }
+          error: `Unable to checkout, encountered an error: ${error.message}`,
+          success: undefined,
         })
       });
   }
@@ -175,7 +168,6 @@ class App extends Component {
           selectedCustomer={ this.state.selectedCustomer }
           selectedMovie={ this.state.selectedMovie }
           onCheckoutClick={ this.onCheckoutClick }
-          checkoutResponse={ this.state.checkoutResponse }
         />
 
         { this.state.error ? <FlashMessage messageContents={this.state.error} messageClass="error-message" /> : "" }
