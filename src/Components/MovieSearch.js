@@ -19,7 +19,12 @@ class MovieSearch extends Component {
     const title = event.target.title;
     const value = event.target.value;
 
-    updatedState[title] = value;
+    // strip periods from value
+    // since periods in the search will cause a routing error
+    // (the g means all occurrences)
+    let cleanValue = value.replace(/\./g, '');
+
+    updatedState[title] = cleanValue;
     this.setState(updatedState);
   }
 
