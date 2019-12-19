@@ -4,7 +4,6 @@ import '../App.css';
 import './Checkout.css';
 
 const Checkout = ({selectedCustomer, selectedMovie, onCheckoutClick}) => {
-  console.log(selectedMovie);
   return (
     <div>
       <section className="App-checkout">
