@@ -143,6 +143,19 @@ class App extends Component {
       });
   }
 
+  onTimeout = () => {
+    console.log("timing out, clearing state");
+
+    // clear success and error messages
+    // clear selected customer and movie
+    this.setState({
+      success: undefined,
+      error: undefined,
+      selectedCustomer: undefined,
+      selectedMovie: undefined,
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -169,8 +182,18 @@ class App extends Component {
           onCheckoutClick={ this.onCheckoutClick }
         />
 
-        { this.state.error ? <FlashMessage messageContents={this.state.error} messageClass="error-message" /> : "" }
-        { this.state.success ? <FlashMessage messageContents={this.state.success} messageClass="success-message" /> : "" }
+        { this.state.error 
+          ? <FlashMessage 
+            messageContents={this.state.error} 
+            messageClass="error-message"
+            onTimeoutCallback={this.onTimeout} /> 
+          : "" }
+        { this.state.success 
+          ? <FlashMessage 
+              messageContents={this.state.success} 
+              messageClass="success-message"
+              onTimeoutCallback={this.onTimeout} /> 
+          : "" }
 
         <Switch>
           <Route path="/search">
